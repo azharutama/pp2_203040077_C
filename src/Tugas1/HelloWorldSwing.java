@@ -1,3 +1,4 @@
+package Tugas1;
 import javax.swing.*;
 
 public class HelloWorldSwing {
@@ -23,6 +24,8 @@ public class HelloWorldSwing {
       }
       
     });
+
+
   }
 }
 
