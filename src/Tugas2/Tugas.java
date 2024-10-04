@@ -7,10 +7,7 @@ public class Tugas extends JFrame {
 
     private boolean checkBoxSelected;
     private JList<String> listTabungan;
-    private JPasswordField passwordField;
-    private JPasswordField confirmPasswordField;
-    private JSpinner transaksiSpinner;
-    private JSpinner tanggalLahirSpinner;
+ 
 
     public Tugas() {
         this.checkBoxSelected = false;
@@ -18,30 +15,30 @@ public class Tugas extends JFrame {
 
         // Label Nama
         JLabel labelNama = new JLabel("Nama:");
-        labelNama.setBounds(15, 40, 350, 10);
+        labelNama.setBounds(15, 15, 350, 20); // Adjusted
 
         // Text field untuk nama
         JTextField textNama = new JTextField("");
-        textNama.setBounds(15, 60, 350, 30);
+        textNama.setBounds(15, 40, 350, 30); // Adjusted
 
         // Label Telepon
         JLabel labelTelepon = new JLabel("No Telepon:");
-        labelTelepon.setBounds(15, 100, 350, 10);
+        labelTelepon.setBounds(15, 80, 350, 20); // Adjusted
 
         // Text field untuk nomor telepon
         JTextField textTelepon = new JTextField("");
-        textTelepon.setBounds(15, 120, 350, 30);
+        textTelepon.setBounds(15, 105, 350, 30); // Adjusted
 
         // Label Jenis Kelamin
-        JLabel labelRadio = new JLabel("Jenis kelamin");
-        labelRadio.setBounds(15, 160, 350, 10);
+        JLabel labelRadio = new JLabel("Jenis kelamin:");
+        labelRadio.setBounds(15, 145, 350, 20); // Adjusted
 
         // Radio button untuk jenis kelamin
         JRadioButton radioButton1 = new JRadioButton("Laki-Laki", true);
-        radioButton1.setBounds(15, 175, 350, 30);
+        radioButton1.setBounds(15, 170, 100, 30); // Adjusted
 
         JRadioButton radioButton2 = new JRadioButton("Perempuan");
-        radioButton2.setBounds(15, 205, 350, 30);
+        radioButton2.setBounds(125, 170, 100, 30); // Adjusted
 
         ButtonGroup bg = new ButtonGroup();
         bg.add(radioButton1);
@@ -49,81 +46,104 @@ public class Tugas extends JFrame {
 
         // Checkbox WNA
         JCheckBox checkBox = new JCheckBox("Warga Negara Asing (WNA)");
-        checkBox.setBounds(15, 235, 350, 30);
+        checkBox.setBounds(15, 200, 350, 30); // Adjusted
 
         // JList untuk memilih jenis tabungan
         JLabel labelTabungan = new JLabel("Jenis Tabungan:");
-        labelTabungan.setBounds(15, 270, 350, 10);
+        labelTabungan.setBounds(15, 235, 350, 20); // Adjusted
 
-        String[] tabunganOptions = {"Tabungan Pendidikan", "Tabungan Haji", "Tabungan Masa Depan", "Tabungan Berjangka"};
+        String[] tabunganOptions = {"Bronze", "silver", "Gold", "Platinum"};
         listTabungan = new JList<>(tabunganOptions);
-        listTabungan.setBounds(15, 290, 350, 60);
+        listTabungan.setBounds(15, 260, 350, 80); // Adjusted
         listTabungan.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // JSpinner untuk jumlah frekuensi transaksi
+            // JSlider untuk jumlah frekuensi transaksi
         JLabel labelTransaksi = new JLabel("Frekuensi Transaksi per Bulan:");
-        labelTransaksi.setBounds(15, 360, 350, 10);
+        labelTransaksi.setBounds(15, 340, 350, 20); // Adjusted
 
-        transaksiSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
-        transaksiSpinner.setBounds(15, 380, 100, 30);
+        // Mengganti JSpinner dengan JSlider
+        JSlider transaksiSlider = new JSlider(JSlider.HORIZONTAL, 1, 100, 1); // Min 1, Max 100, Default 1
+        transaksiSlider.setBounds(15, 360, 300, 50); // Adjusted ukuran slider
+        transaksiSlider.setMajorTickSpacing(10); // Jarak tick utama setiap 10
+        transaksiSlider.setMinorTickSpacing(1); // Jarak tick minor setiap 1
+        transaksiSlider.setPaintTicks(true); // Menampilkan ticks
+        transaksiSlider.setPaintLabels(true); // Menampilkan label angka pada slider
 
+        // Action listener untuk slider jika diperlukan
+        transaksiSlider.addChangeListener(e -> {
+            int frekuensiTransaksi = transaksiSlider.getValue();
+            // Anda dapat melakukan sesuatu dengan nilai frekuensiTransaksi jika diinginkan
+        });
+            
+        
         // JSpinner untuk tanggal lahir
         JLabel labelTanggalLahir = new JLabel("Tanggal Lahir:");
-        labelTanggalLahir.setBounds(15, 420, 350, 10);
+        labelTanggalLahir.setBounds(15, 410, 350, 20); // Adjusted
 
-        tanggalLahirSpinner = new JSpinner(new SpinnerDateModel());
+        JSpinner tanggalLahirSpinner = new JSpinner(new SpinnerDateModel());
+        tanggalLahirSpinner.setBounds(15, 430, 200, 30); // Adjusted
+        // Editor untuk mengatur format tanggal
         JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(tanggalLahirSpinner, "dd/MM/yyyy");
         tanggalLahirSpinner.setEditor(dateEditor);
-        tanggalLahirSpinner.setBounds(15, 440, 200, 30);
-
         // Password fields
+            // Label untuk Password
         JLabel labelPassword = new JLabel("Password:");
-        labelPassword.setBounds(15, 480, 350, 10);
-        
-        passwordField = new JPasswordField();
-        passwordField.setBounds(15, 500, 200, 30);
+        labelPassword.setBounds(15, 480, 350, 20); // Adjusted
 
+        // JPasswordField untuk Password
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(15, 505, 200, 30); // Adjusted
+
+        // Label untuk Confirm Password
         JLabel labelConfirmPassword = new JLabel("Confirm Password:");
-        labelConfirmPassword.setBounds(15, 540, 350, 10);
-        
-        confirmPasswordField = new JPasswordField();
-        confirmPasswordField.setBounds(15, 560, 200, 30);
+        labelConfirmPassword.setBounds(15, 545, 350, 20); // Adjusted
+
+        // JPasswordField untuk Confirm Password
+        JPasswordField confirmPasswordField = new JPasswordField();
+        confirmPasswordField.setBounds(15, 570, 200, 30); // Adjusted
 
         // Button Simpan
         JButton button = new JButton("Simpan");
-        button.setBounds(15, 600, 100, 40);
+        button.setBounds(15, 610, 100, 40); // Adjusted
 
         // TextArea untuk output
         JTextArea txtOutput = new JTextArea("");
-        txtOutput.setBounds(15, 650, 350, 100);
+        txtOutput.setBounds(15, 660, 350, 100); // Adjusted
 
         // Action listener untuk button
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+        
+                // Ambil nilai dari password dan confirm password
+                char[] password = passwordField.getPassword();
+                char[] confirmPassword = confirmPasswordField.getPassword();
+        
+                // Pengecekan password
+                if (!String.valueOf(password).equals(String.valueOf(confirmPassword))) {
+                    // Tampilkan pesan error dan hentikan proses
+                    JOptionPane.showMessageDialog(null, "Password dan Confirm Password tidak cocok!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; // Hentikan eksekusi jika password tidak cocok
+                }
+        
+                // Jika password cocok, lanjutkan dengan proses lain
                 String jenisKelamin = radioButton1.isSelected() ? "Laki-Laki" : "Perempuan";
                 String nama = textNama.getText();
                 String telepon = textTelepon.getText();
                 boolean isWna = checkBoxSelected;
                 String jenisTabungan = listTabungan.getSelectedValue();
-                int frekuensiTransaksi = (int) transaksiSpinner.getValue();
-
-                // Password validation
-                char[] password = passwordField.getPassword();
-                char[] confirmPassword = confirmPasswordField.getPassword();
-                String passwordMessage = (String.valueOf(password).equals(String.valueOf(confirmPassword))) 
-                    ? "Password cocok" : "Password tidak cocok";
-
+                int frekuensiTransaksi = (int) transaksiSlider.getValue();
+        
+                // Update output area
                 txtOutput.append("Hello " + nama + "\n");
                 txtOutput.append("No Telepon: " + telepon + "\n");
                 txtOutput.append("Jenis Kelamin: " + jenisKelamin + "\n");
                 txtOutput.append("WNA: " + (isWna ? "Ya" : "Tidak") + "\n");
                 txtOutput.append("Jenis Tabungan: " + jenisTabungan + "\n");
                 txtOutput.append("Frekuensi Transaksi: " + frekuensiTransaksi + "\n");
-                txtOutput.append(passwordMessage + "\n\n");
+                txtOutput.append("Password cocok\n\n");
                 txtOutput.append("===============================================\n");
-
-                // Reset input
+        
+                // Reset input fields setelah berhasil
                 textNama.setText("");
                 textTelepon.setText("");
                 passwordField.setText("");
@@ -179,7 +199,7 @@ public class Tugas extends JFrame {
         this.add(txtOutput);
         this.add(listTabungan);
         this.add(labelTabungan);
-        this.add(transaksiSpinner);
+        this.add(transaksiSlider);
         this.add(labelTransaksi);
         this.add(labelTanggalLahir);
         this.add(tanggalLahirSpinner);
