@@ -95,7 +95,8 @@ public class Tugas extends JFrame {
                 char[] confirmPassword = confirmPasswordField.getPassword();
 
                 if (!String.valueOf(password).equals(String.valueOf(confirmPassword))) {
-                    JOptionPane.showMessageDialog(null, "Password dan Confirm Password tidak cocok!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Password dan Confirm Password tidak cocok!",
+                             "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
